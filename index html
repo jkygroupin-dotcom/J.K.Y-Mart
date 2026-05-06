@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JKY Shopping Hub</title>
+
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #f5f5f5;
+}
+
+/* HEADER */
+header {
+  background: #111;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 20px;
+}
+
+/* SEARCH */
+.search-box {
+  padding: 10px;
+  text-align: center;
+}
+.search-box input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* PRODUCTS GRID */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  gap: 15px;
+  padding: 15px;
+}
+
+.card {
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+button {
+  background: black;
+  color: white;
+  padding: 8px;
+  border: none;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+/* CATEGORY */
+.categories {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  background: white;
+}
+.categories button {
+  margin-right: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>🔥 JKY Shopping Hub</header>
+
+<div class="search-box">
+<input type="text" id="search" placeholder="Search products..." onkeyup="searchProduct()">
+</div>
+
+<div class="categories">
+<button onclick="filterCategory('all')">All</button>
+<button onclick="filterCategory('electronics')">Electronics</button>
+<button onclick="filterCategory('fashion')">Fashion</button>
+</div>
+
+<div class="products" id="productList"></div>
+
+<script>
+const products = [
+{
+name: "Smartphone",
+price: "₹9999",
+category: "electronics",
+image: "https://via.placeholder.com/200",
+link: "AFFILIATE_LINK"
+},
+{
+name: "Headphones",
+price: "₹1999",
+category: "electronics",
+image: "https://via.placeholder.com/200",
+link: "AFFILIATE_LINK"
+},
+{
+name: "Shoes",
+price: "₹1499",
+category: "fashion",
+image: "https://via.placeholder.com/200",
+link: "AFFILIATE_LINK"
+}
+];
+
+function displayProducts(list){
+const container = document.getElementById("productList");
+container.innerHTML = "";
+list.forEach(p=>{
+container.innerHTML += `
+<div class="card">
+<img src="${p.image}">
+<h3>${p.name}</h3>
+<p>${p.price}</p>
+<a href="${p.link}" target="_blank">
+<button>Buy Now</button>
+</a>
+</div>`;
+});
+}
+
+function searchProduct(){
+let value = document.getElementById("search").value.toLowerCase();
+let filtered = products.filter(p=>p.name.toLowerCase().includes(value));
+displayProducts(filtered);
+}
+
+function filterCategory(cat){
+if(cat === "all") displayProducts(products);
+else displayProducts(products.filter(p=>p.category === cat));
+}
+
+displayProducts(products);
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JKY Shopping Hub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#f1f3f6;
+}
+
+/* HEADER */
+header{
+  background: linear-gradient(45deg,#ff6a00,#ff3c00);
+  color:white;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:600;
+}
+
+.search-box input{
+  padding:10px;
+  width:250px;
+  border:none;
+  border-radius:20px;
+  outline:none;
+}
+
+/* CATEGORY */
+.categories{
+  display:flex;
+  overflow-x:auto;
+  padding:10px;
+  background:white;
+}
+
+.categories button{
+  border:none;
+  padding:8px 15px;
+  margin-right:10px;
+  border-radius:20px;
+  cursor:pointer;
+  background:#eee;
+}
+
+.categories button:hover{
+  background:#ff3c00;
+  color:white;
+}
+
+/* GRID */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  padding:15px;
+}
+
+/* CARD */
+.card{
+  background:white;
+  border-radius:12px;
+  padding:10px;
+  text-align:center;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.card h3{
+  font-size:16px;
+  margin:10px 0;
+}
+
+.price{
+  color:green;
+  font-weight:bold;
+}
+
+/* BUTTON */
+.btn{
+  background:linear-gradient(45deg,#000,#333);
+  color:white;
+  padding:8px 12px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+  margin-top:5px;
+}
+
+.btn:hover{
+  background:#ff3c00;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:15px;
+  background:#111;
+  color:white;
+  margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">🛒 JKY Shop</div>
+<div class="search-box">
+<input type="text" id="search" placeholder="Search products..." onkeyup="searchProduct()">
+</div>
+</header>
+
+<div class="categories">
+<button onclick="filterCategory('all')">All</button>
+<button onclick="filterCategory('electronics')">Electronics</button>
+<button onclick="filterCategory('fashion')">Fashion</button>
+<button onclick="filterCategory('home')">Home</button>
+</div>
+
+<div class="products" id="productList"></div>
+
+<footer>
+© 2026 JKY Shopping | We may earn commission
+</footer>
+
+<script>
+const products = [
+{
+name:"Smartphone",
+price:"₹9,999",
+category:"electronics",
+image:"https://via.placeholder.com/200",
+link:"AFFILIATE_LINK"
+},
+{
+name:"Headphones",
+price:"₹1,999",
+category:"electronics",
+image:"https://via.placeholder.com/200",
+link:"AFFILIATE_LINK"
+},
+{
+name:"Shoes",
+price:"₹1,499",
+category:"fashion",
+image:"https://via.placeholder.com/200",
+link:"AFFILIATE_LINK"
+},
+{
+name:"Chair",
+price:"₹2,499",
+category:"home",
+image:"https://via.placeholder.com/200",
+link:"AFFILIATE_LINK"
+}
+];
+
+function displayProducts(list){
+const container=document.getElementById("productList");
+container.innerHTML="";
+list.forEach(p=>{
+container.innerHTML+=`
+<div class="card">
+<img src="${p.image}">
+<h3>${p.name}</h3>
+<p class="price">${p.price}</p>
+<a href="${p.link}" target="_blank">
+<button class="btn">Buy Now</button>
+</a>
+</div>`;
+});
+}
+
+function searchProduct(){
+let value=document.getElementById("search").value.toLowerCase();
+let filtered=products.filter(p=>p.name.toLowerCase().includes(value));
+displayProducts(filtered);
+}
+
+function filterCategory(cat){
+if(cat==="all") displayProducts(products);
+else displayProducts(products.filter(p=>p.category===cat));
+}
+
+displayProducts(products);
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JKY Ultra Shop</title>
+
+<style>
+body {margin:0;font-family:sans-serif;background:#f5f5f5;}
+header{background:#111;color:#fff;padding:10px;text-align:center;}
+.search{padding:10px;text-align:center;}
+.search input{width:80%;padding:10px;border-radius:20px;border:none;}
+
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;padding:10px;}
+.card{background:#fff;padding:10px;border-radius:10px;text-align:center;position:relative;}
+.card img{width:100%;height:150px;object-fit:cover;}
+.price{color:green;font-weight:bold;}
+
+button{padding:6px;border:none;border-radius:10px;background:black;color:white;margin-top:5px;}
+
+.wishlist{position:absolute;top:10px;right:10px;cursor:pointer;}
+.rating{color:orange;}
+
+.bottom-nav{
+position:fixed;bottom:0;width:100%;
+display:flex;justify-content:space-around;
+background:#111;color:#fff;padding:10px;
+}
+
+/* loader */
+.loader{
+position:fixed;
+width:100%;
+height:100%;
+background:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:20px;
+}
+
+/* modal */
+.modal{
+display:none;
+position:fixed;
+top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,0.7);
+}
+.modal-content{
+background:#fff;margin:50px;padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="loader" id="loader">Loading...</div>
+
+<header>🔥 JKY Ultra Shop</header>
+
+<div class="search">
+<input type="text" id="search" placeholder="Search..." onkeyup="searchProduct()">
+</div>
+
+<div class="products" id="productList"></div>
+
+<div class="bottom-nav">
+<div>🏠 Home</div>
+<div>🔥 Deals</div>
+<div>❤️ Wishlist</div>
+<div>🛒 Cart</div>
+</div>
+
+<div class="modal" id="modal">
+<div class="modal-content" id="modalContent"></div>
+</div>
+
+<script>
+
+let products = [
+{name:"Smartphone",price:9999,category:"electronics",rating:4.5,image:"https://via.placeholder.com/200",link:"#"},
+{name:"Shoes",price:1499,category:"fashion",rating:4.2,image:"https://via.placeholder.com/200",link:"#"},
+{name:"Headphones",price:1999,category:"electronics",rating:4.7,image:"https://via.placeholder.com/200",link:"#"},
+{name:"T-shirt",price:499,category:"fashion",rating:4.0,image:"https://via.placeholder.com/200",link:"#"}
+];
+
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+function displayProducts(list){
+let container=document.getElementById("productList");
+container.innerHTML="";
+list.forEach((p,i)=>{
+container.innerHTML+=`
+<div class="card">
+<div class="wishlist" onclick="toggleWishlist(${i})">❤️</div>
+<img src="${p.image}" onclick="openDetail(${i})">
+<h3>${p.name}</h3>
+<p class="price">₹${p.price}</p>
+<p class="rating">⭐ ${p.rating}</p>
+
+<button onclick="buy()">Buy Now</button>
+<button onclick="addCart('${p.name}')">Add Cart</button>
+</div>`;
+});
+}
+
+function searchProduct(){
+let val=document.getElementById("search").value.toLowerCase();
+let filtered=products.filter(p=>p.name.toLowerCase().includes(val));
+displayProducts(filtered);
+}
+
+function toggleWishlist(i){
+wishlist.push(products[i]);
+localStorage.setItem("wishlist",JSON.stringify(wishlist));
+alert("Added to wishlist ❤️");
+}
+
+function addCart(name){
+alert(name+" added to cart");
+}
+
+function buy(){
+alert("Redirect to affiliate link");
+}
+
+function openDetail(i){
+let p=products[i];
+document.getElementById("modal").style.display="block";
+document.getElementById("modalContent").innerHTML=`
+<h2>${p.name}</h2>
+<img src="${p.image}" width="100%">
+<p>Price: ₹${p.price}</p>
+<p>Rating: ⭐ ${p.rating}</p>
+<p>Compare: ₹${p.price+500} (Other app)</p>
+<button onclick="buy()">Buy Now</button>
+`;
+}
+
+window.onload=()=>{
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+displayProducts(products);
+},1000);
+}
+
+</script>
+
+</body>
+</html>
