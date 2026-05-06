@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JKY Ultra Shop</title>
+
+<style>
+body {margin:0;font-family:sans-serif;background:#f5f5f5;}
+header{background:#111;color:#fff;padding:10px;text-align:center;}
+.search{padding:10px;text-align:center;}
+.search input{width:80%;padding:10px;border-radius:20px;border:none;}
+
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;padding:10px;}
+.card{background:#fff;padding:10px;border-radius:10px;text-align:center;position:relative;}
+.card img{width:100%;height:150px;object-fit:cover;}
+.price{color:green;font-weight:bold;}
+
+button{padding:6px;border:none;border-radius:10px;background:black;color:white;margin-top:5px;}
+
+.wishlist{position:absolute;top:10px;right:10px;cursor:pointer;}
+.rating{color:orange;}
+
+.bottom-nav{
+position:fixed;bottom:0;width:100%;
+display:flex;justify-content:space-around;
+background:#111;color:#fff;padding:10px;
+}
+
+/* loader */
+.loader{
+position:fixed;
+width:100%;
+height:100%;
+background:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:20px;
+}
+
+/* modal */
+.modal{
+display:none;
+position:fixed;
+top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,0.7);
+}
+.modal-content{
+background:#fff;margin:50px;padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="loader" id="loader">Loading...</div>
+
+<header>🔥 JKY Ultra Shop</header>
+
+<div class="search">
+<input type="text" id="search" placeholder="Search..." onkeyup="searchProduct()">
+</div>
+
+<div class="products" id="productList"></div>
+
+<div class="bottom-nav">
+<div>🏠 Home</div>
+<div>🔥 Deals</div>
+<div>❤️ Wishlist</div>
+<div>🛒 Cart</div>
+</div>
+
+<div class="modal" id="modal">
+<div class="modal-content" id="modalContent"></div>
+</div>
+
+<script>
+
+let products = [
+{name:"Smartphone",price:9999,category:"electronics",rating:4.5,image:"https://via.placeholder.com/200",link:"#"},
+{name:"Shoes",price:1499,category:"fashion",rating:4.2,image:"https://via.placeholder.com/200",link:"#"},
+{name:"Headphones",price:1999,category:"electronics",rating:4.7,image:"https://via.placeholder.com/200",link:"#"},
+{name:"T-shirt",price:499,category:"fashion",rating:4.0,image:"https://via.placeholder.com/200",link:"#"}
+];
+
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+function displayProducts(list){
+let container=document.getElementById("productList");
+container.innerHTML="";
+list.forEach((p,i)=>{
+container.innerHTML+=`
+<div class="card">
+<div class="wishlist" onclick="toggleWishlist(${i})">❤️</div>
+<img src="${p.image}" onclick="openDetail(${i})">
+<h3>${p.name}</h3>
+<p class="price">₹${p.price}</p>
+<p class="rating">⭐ ${p.rating}</p>
+
+<button onclick="buy()">Buy Now</button>
+<button onclick="addCart('${p.name}')">Add Cart</button>
+</div>`;
+});
+}
+
+function searchProduct(){
+let val=document.getElementById("search").value.toLowerCase();
+let filtered=products.filter(p=>p.name.toLowerCase().includes(val));
+displayProducts(filtered);
+}
+
+function toggleWishlist(i){
+wishlist.push(products[i]);
+localStorage.setItem("wishlist",JSON.stringify(wishlist));
+alert("Added to wishlist ❤️");
+}
+
+function addCart(name){
+alert(name+" added to cart");
+}
+
+function buy(){
+alert("Redirect to affiliate link");
+}
+
+function openDetail(i){
+let p=products[i];
+document.getElementById("modal").style.display="block";
+document.getElementById("modalContent").innerHTML=`
+<h2>${p.name}</h2>
+<img src="${p.image}" width="100%">
+<p>Price: ₹${p.price}</p>
+<p>Rating: ⭐ ${p.rating}</p>
+<p>Compare: ₹${p.price+500} (Other app)</p>
+<button onclick="buy()">Buy Now</button>
+`;
+}
+
+window.onload=()=>{
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+displayProducts(products);
+},1000);
+}
+
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JKY Premium Shop</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+}
+
+/* NAVBAR */
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
+backdrop-filter:blur(10px);
+background:rgba(255,255,255,0.05);
+position:sticky;
+top:0;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+}
+
+.search input{
+padding:10px;
+border-radius:30px;
+border:none;
+width:250px;
+outline:none;
+}
+
+/* HERO */
+.hero{
+padding:40px 20px;
+text-align:center;
+}
+
+.hero h1{
+font-size:32px;
+font-weight:700;
+}
+
+.hero p{
+opacity:0.7;
+margin-top:10px;
+}
+
+/* PRODUCTS */
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:20px;
+}
+
+/* CARD */
+.card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+border-radius:15px;
+padding:15px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px) scale(1.02);
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.card h3{
+margin:10px 0;
+}
+
+.price{
+color:#00ffcc;
+font-weight:bold;
+}
+
+.rating{
+color:gold;
+}
+
+/* BUTTON */
+.btn{
+margin-top:8px;
+padding:8px;
+border:none;
+border-radius:20px;
+background:linear-gradient(45deg,#ff416c,#ff4b2b);
+color:white;
+cursor:pointer;
+}
+
+/* CATEGORY BAR */
+.categories{
+display:flex;
+overflow-x:auto;
+padding:10px;
+}
+
+.categories button{
+margin-right:10px;
+padding:8px 15px;
+border:none;
+border-radius:20px;
+background:rgba(255,255,255,0.1);
+color:white;
+cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:20px;
+opacity:0.6;
+}
+
+/* MOBILE NAV */
+.bottom-nav{
+position:fixed;
+bottom:0;
+width:100%;
+display:flex;
+justify-content:space-around;
+background:rgba(0,0,0,0.8);
+padding:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+<div class="logo">🛒 JKY</div>
+<div class="search">
+<input type="text" placeholder="Search premium products...">
+</div>
+</div>
+
+<div class="hero">
+<h1>Discover Premium Deals</h1>
+<p>Smart shopping starts here</p>
+</div>
+
+<div class="categories">
+<button>All</button>
+<button>Electronics</button>
+<button>Fashion</button>
+<button>Home</button>
+</div>
+
+<div class="products">
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Smartphone</h3>
+<p class="price">₹9,999</p>
+<p class="rating">⭐ 4.5</p>
+<button class="btn">Buy Now</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Shoes</h3>
+<p class="price">₹1,499</p>
+<p class="rating">⭐ 4.2</p>
+<button class="btn">Buy Now</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Headphones</h3>
+<p class="price">₹1,999</p>
+<p class="rating">⭐ 4.7</p>
+<button class="btn">Buy Now</button>
+</div>
+
+</div>
+
+<footer>
+© 2026 JKY Premium | We may earn commission
+</footer>
+
+<div class="bottom-nav">
+<div>🏠</div>
+<div>🔥</div>
+<div>❤️</div>
+<div>🛒</div>
+</div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JKY World Shop</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0b0f1a;
+  --card:rgba(255,255,255,0.06);
+  --glass:rgba(255,255,255,0.08);
+  --accent:#6c5ce7;
+  --accent2:#00f2fe;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+
+body{
+  background:linear-gradient(135deg,#0b0f1a,#111827);
+  color:white;
+}
+
+/* NAVBAR */
+.navbar{
+  position:sticky;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 18px;
+  backdrop-filter:blur(15px);
+  background:rgba(0,0,0,0.5);
+  z-index:1000;
+}
+
+.logo{font-weight:700;font-size:20px;}
+
+.search{
+  position:relative;
+}
+.search input{
+  padding:10px 35px;
+  border-radius:30px;
+  border:none;
+  outline:none;
+  width:240px;
+}
+.search::before{
+  content:"🔍";
+  position:absolute;
+  left:10px;
+  top:8px;
+}
+
+/* HERO */
+.hero{
+  padding:30px 20px;
+  text-align:center;
+}
+.hero h1{
+  font-size:34px;
+  background:linear-gradient(45deg,#6c5ce7,#00f2fe);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.hero p{opacity:0.6;margin-top:8px;}
+
+/* CATEGORY */
+.categories{
+  display:flex;
+  overflow-x:auto;
+  padding:10px;
+}
+.categories button{
+  margin-right:10px;
+  padding:8px 14px;
+  border-radius:20px;
+  border:none;
+  background:var(--glass);
+  color:white;
+  cursor:pointer;
+}
+.categories button:hover{
+  background:var(--accent);
+}
+
+/* GRID */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  padding:20px;
+}
+
+/* CARD */
+.card{
+  background:var(--card);
+  backdrop-filter:blur(20px);
+  border-radius:18px;
+  padding:12px;
+  position:relative;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+.card img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:linear-gradient(45deg,#ff416c,#ff4b2b);
+  padding:3px 8px;
+  font-size:12px;
+  border-radius:8px;
+}
+
+.wishlist{
+  position:absolute;
+  top:10px;
+  right:10px;
+  cursor:pointer;
+}
+
+.price{
+  color:#00f2fe;
+  font-weight:600;
+}
+
+.rating{
+  color:gold;
+  font-size:14px;
+}
+
+/* BUTTON */
+.btn{
+  margin-top:8px;
+  padding:8px;
+  width:100%;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(45deg,#6c5ce7,#00f2fe);
+  color:white;
+  cursor:pointer;
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.7);
+}
+.modal-content{
+  background:#111;
+  margin:50px;
+  padding:20px;
+  border-radius:15px;
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+  padding:10px;
+  background:rgba(0,0,0,0.8);
+}
+
+/* LOADER */
+.loader{
+  position:fixed;
+  width:100%;height:100%;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="loader" id="loader">Loading Premium UI...</div>
+
+<div class="navbar">
+<div class="logo">🛒 JKY</div>
+<div class="search">
+<input type="text" id="search" placeholder="Search..." onkeyup="searchProduct()">
+</div>
+</div>
+
+<div class="hero">
+<h1>Next-Gen Shopping</h1>
+<p>Experience luxury shopping UI</p>
+</div>
+
+<div class="categories">
+<button onclick="filter('all')">All</button>
+<button onclick="filter('electronics')">Electronics</button>
+<button onclick="filter('fashion')">Fashion</button>
+</div>
+
+<div class="products" id="products"></div>
+
+<div class="modal" id="modal">
+<div class="modal-content" id="modalContent"></div>
+</div>
+
+<div class="bottom-nav">
+<div>🏠</div>
+<div>🔥</div>
+<div>❤️</div>
+<div>🛒</div>
+</div>
+
+<script>
+let data=[
+{name:"Smartphone",price:9999,cat:"electronics",rating:4.5,img:"https://via.placeholder.com/200"},
+{name:"Shoes",price:1499,cat:"fashion",rating:4.2,img:"https://via.placeholder.com/200"},
+{name:"Headphones",price:1999,cat:"electronics",rating:4.8,img:"https://via.placeholder.com/200"}
+];
+
+function render(list){
+let html="";
+list.forEach((p,i)=>{
+html+=`
+<div class="card">
+<div class="badge">HOT</div>
+<div class="wishlist">❤️</div>
+<img src="${p.img}" onclick="detail(${i})">
+<h3>${p.name}</h3>
+<p class="price">₹${p.price}</p>
+<p class="rating">⭐ ${p.rating}</p>
+<button class="btn">Buy Now</button>
+</div>`;
+});
+document.getElementById("products").innerHTML=html;
+}
+
+function searchProduct(){
+let val=document.getElementById("search").value.toLowerCase();
+render(data.filter(p=>p.name.toLowerCase().includes(val)));
+}
+
+function filter(cat){
+if(cat=="all") render(data);
+else render(data.filter(p=>p.cat==cat));
+}
+
+function detail(i){
+let p=data[i];
+document.getElementById("modal").style.display="block";
+document.getElementById("modalContent").innerHTML=`
+<h2>${p.name}</h2>
+<img src="${p.img}" width="100%">
+<p>₹${p.price}</p>
+<p>⭐ ${p.rating}</p>
+<button class="btn">Buy Now</button>
+`;
+}
+
+window.onload=()=>{
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+render(data);
+},1000);
+}
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JKY Mart</title>
+
+<style>
+body {margin:0;font-family:sans-serif;background:#f5f5f5;}
+
+/* TOP BAR */
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px;
+background:#111;
+color:#fff;
+}
+
+.search{
+flex:1;
+text-align:center;
+}
+.search input{
+width:70%;
+padding:8px;
+border-radius:20px;
+border:none;
+}
+
+/* SUGGEST BAR */
+.suggest{
+display:flex;
+overflow-x:auto;
+padding:10px;
+background:#fff;
+}
+.suggest div{
+margin-right:10px;
+padding:8px 15px;
+background:#eee;
+border-radius:20px;
+cursor:pointer;
+}
+
+/* SECTION */
+.section{
+padding:10px;
+}
+
+.title{
+font-weight:bold;
+margin-bottom:10px;
+}
+
+/* PRODUCTS */
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:10px;
+}
+
+.card{
+background:#fff;
+padding:10px;
+border-radius:10px;
+text-align:center;
+}
+
+.card img{
+width:100%;
+height:120px;
+object-fit:cover;
+}
+
+.price{color:green;font-weight:bold;}
+.rating{color:orange;}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+<div>Login / Signup</div>
+
+<div class="search">
+<input type="text" placeholder="Search products...">
+</div>
+
+<div>JKY Mart</div>
+</div>
+
+<!-- SUGGEST BAR -->
+<div class="suggest">
+<div onclick="filter('fashion')">Fashion</div>
+<div onclick="filter('vegetable')">Vegetable</div>
+<div onclick="filter('grocery')">Grocery</div>
+<div onclick="filter('electronics')">Electronics</div>
+</div>
+
+<!-- OFFERS -->
+<div class="section">
+<div class="title">🔥 Offers</div>
+<div class="products" id="offers"></div>
+</div>
+
+<!-- CATEGORY SECTION -->
+<div class="section">
+<div class="title">All Products</div>
+<div class="products" id="products"></div>
+</div>
+
+<!-- CASHBACK -->
+<div class="section">
+<div class="title">💰 Cashback Deals</div>
+<div class="products" id="cashback"></div>
+</div>
+
+<script>
+
+let data = [
+{name:"T-Shirt",price:499,cat:"fashion",rating:4.5,img:"https://via.placeholder.com/150"},
+{name:"Vegetables Pack",price:199,cat:"vegetable",rating:4.2,img:"https://via.placeholder.com/150"},
+{name:"Rice Bag",price:999,cat:"grocery",rating:4.3,img:"https://via.placeholder.com/150"},
+{name:"Headphones",price:1999,cat:"electronics",rating:4.7,img:"https://via.placeholder.com/150"}
+];
+
+function render(list, id){
+let html="";
+list.forEach(p=>{
+html+=`
+<div class="card">
+<img src="${p.img}">
+<h4>${p.name}</h4>
+<p class="price">₹${p.price}</p>
+<p class="rating">⭐ ${p.rating}</p>
+<button>Buy</button>
+</div>`;
+});
+document.getElementById(id).innerHTML=html;
+}
+
+function filter(cat){
+render(data.filter(p=>p.cat==cat), "products");
+}
+
+render(data,"products");
+render(data,"offers");
+render(data,"cashback");
+
+</script>
+
+</body>
+</html>
