@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JKY Mart - Luxury Shopping Experience</title>
 
   <!-- Google Font -->
@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <!-- External CSS File -->
   <link rel="stylesheet" href="./style.css">
@@ -23,47 +23,50 @@
        HEADER
   ========================== -->
 
-  <header>
+  <header role="banner">
 
     <div class="top-header">
 
       <!-- Left -->
-      <button class="auth-btn">
+      <button class="auth-btn" aria-label="Login or Signup to your account">
         Login / Signup
       </button>
 
       <!-- Center -->
-      <div class="search-box">
+      <form class="search-box" role="search" onsubmit="event.preventDefault()">
         <input
           type="text"
           id="searchInput"
           placeholder="Search fashion, electronics, grocery..."
-        />
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </div>
+          aria-label="Search products"
+        >
+        <button type="submit" aria-label="Search" style="background: none; border: none; cursor: pointer;">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
 
       <!-- Right -->
-      <div class="logo">
+      <div class="logo" role="img" aria-label="JKY MART Logo">
         JKY MART
       </div>
 
     </div>
 
     <!-- Categories -->
-    <div class="category-scroll">
+    <nav class="category-scroll" aria-label="Product categories">
 
-      <div class="cat-btn active">Fashion</div>
-      <div class="cat-btn">Vegetable</div>
-      <div class="cat-btn">Grocery</div>
-      <div class="cat-btn">Electronics</div>
-      <div class="cat-btn">Headphones</div>
-      <div class="cat-btn">Phones</div>
-      <div class="cat-btn">Camera</div>
-      <div class="cat-btn">Iron</div>
-      <div class="cat-btn">Laptop</div>
-      <div class="cat-btn">Kitchen</div>
+      <button class="cat-btn active" aria-pressed="true">Fashion</button>
+      <button class="cat-btn" aria-pressed="false">Vegetable</button>
+      <button class="cat-btn" aria-pressed="false">Grocery</button>
+      <button class="cat-btn" aria-pressed="false">Electronics</button>
+      <button class="cat-btn" aria-pressed="false">Headphones</button>
+      <button class="cat-btn" aria-pressed="false">Phones</button>
+      <button class="cat-btn" aria-pressed="false">Camera</button>
+      <button class="cat-btn" aria-pressed="false">Iron</button>
+      <button class="cat-btn" aria-pressed="false">Laptop</button>
+      <button class="cat-btn" aria-pressed="false">Kitchen</button>
 
-    </div>
+    </nav>
 
   </header>
 
@@ -71,7 +74,7 @@
        HERO
   ========================== -->
 
-  <section class="hero">
+  <section class="hero" aria-label="Hero banner with featured promotion">
 
     <div class="hero-text">
 
@@ -87,14 +90,14 @@
         and futuristic product browsing.
       </p>
 
-      <button class="shop-btn">
+      <button class="shop-btn" aria-label="Start exploring products">
         Explore Now
       </button>
 
     </div>
 
     <div class="hero-image">
-      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1000&auto=format&fit=crop" alt="">
+      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1000&auto=format&fit=crop" alt="Premium shopping experience showcase">
     </div>
 
   </section>
@@ -107,171 +110,171 @@
     🔥 Trending Deals
   </h2>
 
-  <section class="product-grid" id="productGrid">
+  <section class="product-grid" id="productGrid" aria-label="Trending products">
 
     <!-- PRODUCT -->
 
-    <div class="product-card">
+    <article class="product-card" data-product="tshirt">
 
-      <div class="discount">
+      <div class="discount" aria-label="40 percent discount">
         40% OFF
       </div>
 
       <div class="product-img">
-        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1000&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1000&auto=format&fit=crop" alt="Premium Black T-Shirt">
       </div>
 
       <div class="product-content">
 
-        <div class="product-title">
+        <h3 class="product-title">
           Premium Black T-Shirt
-        </div>
+        </h3>
 
-        <div class="price">
+        <div class="price" aria-label="Price: 899 rupees">
           ₹899
         </div>
 
-        <div class="rating">
+        <div class="rating" aria-label="Rating: 5 out of 5 stars">
           ★★★★★
         </div>
 
         <div class="product-actions">
-          <button class="cart-btn">
+          <button class="cart-btn" aria-label="Add Premium Black T-Shirt to cart">
             Add Cart
           </button>
 
-          <button class="wish-btn">
+          <button class="wish-btn" aria-label="Add to wishlist" title="Add to wishlist">
             ❤
           </button>
         </div>
 
-        <button class="try-btn">
+        <button class="try-btn" aria-label="Try this product virtually">
           📸 Try Now
         </button>
 
       </div>
 
-    </div>
+    </article>
 
     <!-- PRODUCT -->
 
-    <div class="product-card">
+    <article class="product-card" data-product="iphone">
 
-      <div class="discount">
+      <div class="discount" aria-label="55 percent discount">
         55% OFF
       </div>
 
       <div class="product-img">
-        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1000&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1000&auto=format&fit=crop" alt="iPhone Premium Edition">
       </div>
 
       <div class="product-content">
 
-        <div class="product-title">
+        <h3 class="product-title">
           iPhone Premium Edition
-        </div>
+        </h3>
 
-        <div class="price">
+        <div class="price" aria-label="Price: 89999 rupees">
           ₹89,999
         </div>
 
-        <div class="rating">
+        <div class="rating" aria-label="Rating: 5 out of 5 stars">
           ★★★★★
         </div>
 
         <div class="product-actions">
-          <button class="cart-btn">
+          <button class="cart-btn" aria-label="Add iPhone Premium Edition to cart">
             Add Cart
           </button>
 
-          <button class="wish-btn">
+          <button class="wish-btn" aria-label="Add to wishlist" title="Add to wishlist">
             ❤
           </button>
         </div>
 
       </div>
 
-    </div>
+    </article>
 
     <!-- PRODUCT -->
 
-    <div class="product-card">
+    <article class="product-card" data-product="headphones">
 
-      <div class="discount">
+      <div class="discount" aria-label="25 percent discount">
         25% OFF
       </div>
 
       <div class="product-img">
-        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1000&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1000&auto=format&fit=crop" alt="Wireless Headphones">
       </div>
 
       <div class="product-content">
 
-        <div class="product-title">
+        <h3 class="product-title">
           Wireless Headphones
-        </div>
+        </h3>
 
-        <div class="price">
+        <div class="price" aria-label="Price: 2499 rupees">
           ₹2,499
         </div>
 
-        <div class="rating">
+        <div class="rating" aria-label="Rating: 4 out of 5 stars">
           ★★★★☆
         </div>
 
         <div class="product-actions">
-          <button class="cart-btn">
+          <button class="cart-btn" aria-label="Add Wireless Headphones to cart">
             Add Cart
           </button>
 
-          <button class="wish-btn">
+          <button class="wish-btn" aria-label="Add to wishlist" title="Add to wishlist">
             ❤
           </button>
         </div>
 
       </div>
 
-    </div>
+    </article>
 
     <!-- PRODUCT -->
 
-    <div class="product-card">
+    <article class="product-card" data-product="grocery">
 
-      <div class="discount">
+      <div class="discount" aria-label="65 percent discount">
         65% OFF
       </div>
 
       <div class="product-img">
-        <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=1000&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=1000&auto=format&fit=crop" alt="Grocery Combo Pack">
       </div>
 
       <div class="product-content">
 
-        <div class="product-title">
+        <h3 class="product-title">
           Grocery Combo Pack
-        </div>
+        </h3>
 
-        <div class="price">
+        <div class="price" aria-label="Price: 1299 rupees">
           ₹1,299
         </div>
 
-        <div class="rating">
+        <div class="rating" aria-label="Rating: 5 out of 5 stars">
           ★★★★★
         </div>
 
         <div class="product-actions">
-          <button class="cart-btn">
+          <button class="cart-btn" aria-label="Add Grocery Combo Pack to cart">
             Add Cart
           </button>
 
-          <button class="wish-btn">
+          <button class="wish-btn" aria-label="Add to wishlist" title="Add to wishlist">
             ❤
           </button>
         </div>
 
       </div>
 
-    </div>
+    </article>
 
   </section>
 
@@ -279,7 +282,7 @@
        CASHBACK
   ========================== -->
 
-  <section class="cashback">
+  <section class="cashback" aria-label="Cashback rewards offer">
 
     <div>
       <h2>
@@ -291,7 +294,7 @@
       </p>
     </div>
 
-    <button class="shop-btn">
+    <button class="shop-btn" aria-label="Claim cashback rewards">
       Claim Rewards
     </button>
 
@@ -305,31 +308,33 @@
     🎥 Play / Shopping Reels
   </h2>
 
-  <section class="reels">
+  <section class="reels" aria-label="Shopping reels">
 
-    <div class="reel-card">
+    <article class="reel-card">
 
-      <video autoplay muted loop>
+      <video autoplay muted loop aria-label="Premium Fashion Collection video">
         <source src="https://cdn.coverr.co/videos/coverr-fashion-model-1560685086347?download=1080p" type="video/mp4">
+        Your browser does not support the video tag.
       </video>
 
       <div class="reel-info">
         Premium Fashion Collection
       </div>
 
-    </div>
+    </article>
 
-    <div class="reel-card">
+    <article class="reel-card">
 
-      <video autoplay muted loop>
+      <video autoplay muted loop aria-label="Smart Electronics video">
         <source src="https://cdn.coverr.co/videos/coverr-a-man-using-his-phone-1566115606458?download=1080p" type="video/mp4">
+        Your browser does not support the video tag.
       </video>
 
       <div class="reel-info">
         Smart Electronics
       </div>
 
-    </div>
+    </article>
 
   </section>
 
@@ -337,34 +342,34 @@
        BOTTOM NAVIGATION
   ========================== -->
 
-  <div class="bottom-nav">
+  <nav class="bottom-nav" aria-label="Bottom navigation menu">
 
-    <div class="nav-item">
-      <i class="fa-solid fa-house"></i>
+    <button class="nav-item" aria-label="Home" aria-current="page">
+      <i class="fa-solid fa-house" aria-hidden="true"></i>
       <span>Home</span>
-    </div>
+    </button>
 
-    <div class="nav-item">
-      <i class="fa-solid fa-circle-play"></i>
+    <button class="nav-item" aria-label="Play videos">
+      <i class="fa-solid fa-circle-play" aria-hidden="true"></i>
       <span>Play</span>
-    </div>
+    </button>
 
-    <div class="nav-item">
-      <i class="fa-solid fa-layer-group"></i>
+    <button class="nav-item" aria-label="Browse categories">
+      <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
       <span>Category</span>
-    </div>
+    </button>
 
-    <div class="nav-item">
-      <i class="fa-solid fa-cart-shopping"></i>
+    <button class="nav-item" aria-label="View shopping cart">
+      <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
       <span>Cart</span>
-    </div>
+    </button>
 
-    <div class="nav-item">
-      <i class="fa-solid fa-user"></i>
+    <button class="nav-item" aria-label="Your account">
+      <i class="fa-solid fa-user" aria-hidden="true"></i>
       <span>Account</span>
-    </div>
+    </button>
 
-  </div>
+  </nav>
 
   <!-- =========================
        JAVASCRIPT
@@ -409,9 +414,11 @@
 
         categoryButtons.forEach(btn => {
           btn.classList.remove("active");
+          btn.setAttribute("aria-pressed", "false");
         });
 
         button.classList.add("active");
+        button.setAttribute("aria-pressed", "true");
 
       });
 
