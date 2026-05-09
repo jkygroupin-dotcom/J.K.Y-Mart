@@ -879,3 +879,533 @@ body::after{
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JKY MART</title>
+
+<!-- GOOGLE FONT -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- ICONS -->
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+<style>
+
+/* YAHAN TUM APNA PURA CSS CODE PASTE KARO */
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<header class="navbar">
+
+  <div class="logo">
+    JKY MART
+  </div>
+
+  <div class="search-bar">
+
+    <input
+    type="text"
+    placeholder="Search products..."
+    >
+
+    <i class="fa-solid fa-magnifying-glass"></i>
+
+  </div>
+
+  <div class="nav-actions">
+
+    <button>
+      Login
+    </button>
+
+  </div>
+
+</header>
+
+<!-- =========================================
+     HERO SECTION
+========================================= -->
+
+<section class="hero">
+
+  <h1>
+    Future Of Luxury Shopping
+  </h1>
+
+  <p>
+    Premium futuristic ecommerce inspired by Amazon,
+    Apple and Stripe.
+  </p>
+
+  <button class="hero-btn">
+    Shop Now
+  </button>
+
+</section>
+
+<!-- =========================================
+     PRODUCTS
+========================================= -->
+
+<section class="products">
+
+  <div class="product-card">
+
+    <div class="product-image">
+      PRODUCT IMAGE
+    </div>
+
+    <div class="product-info">
+
+      <h3>
+        Premium Sneakers
+      </h3>
+
+      <div class="rating">
+        ★★★★★
+      </div>
+
+      <button>
+        Buy Now
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+  <h2>
+    JKY MART
+  </h2>
+
+</footer>
+
+</body>
+</html>
+
+ <style> ... </style> 
+
+ "use client";
+
+/* =========================================
+   JKY MART — FUTURISTIC LUXURY ECOMMERCE
+   Next.js + React + Tailwind + Framer Motion
+========================================= */
+
+import { motion } from "framer-motion";
+import {
+  Search,
+  ShoppingCart,
+  User,
+  Heart,
+  Sparkles,
+  ArrowRight,
+  Star,
+} from "lucide-react";
+
+const products = [
+  {
+    title: "Luxury Sneakers",
+    tag: "50% OFF",
+    rating: "5.0",
+  },
+  {
+    title: "Premium Headphones",
+    tag: "TRENDING",
+    rating: "5.0",
+  },
+  {
+    title: "Smart Watch",
+    tag: "AI PICK",
+    rating: "5.0",
+  },
+  {
+    title: "Futuristic Jacket",
+    tag: "NEW",
+    rating: "5.0",
+  },
+];
+
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-[#0F1115] text-white overflow-hidden">
+
+      {/* =========================================
+          BACKGROUND GLOW
+      ========================================= */}
+
+      <div className="fixed top-[-200px] left-[-200px] w-[500px] h-[500px] bg-purple-600/20 blur-[120px] rounded-full z-0"></div>
+
+      <div className="fixed bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-yellow-400/10 blur-[120px] rounded-full z-0"></div>
+
+      {/* =========================================
+          NAVBAR
+      ========================================= */}
+
+      <header className="sticky top-0 z-50 backdrop-blur-2xl bg-black/30 border-b border-white/10">
+
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-5 px-6 py-4">
+
+          {/* LOGO */}
+
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-3xl md:text-4xl font-black bg-gradient-to-r from-purple-400 via-purple-500 to-yellow-300 text-transparent bg-clip-text"
+          >
+            JKY MART
+          </motion.h1>
+
+          {/* SEARCH */}
+
+          <div className="hidden md:flex flex-1 max-w-3xl relative">
+
+            <input
+              type="text"
+              placeholder="Search luxury products..."
+              className="w-full h-14 rounded-2xl bg-white/5 border border-white/10 px-6 pr-14 outline-none focus:border-purple-500 focus:shadow-[0_0_40px_rgba(139,92,246,0.4)] transition-all"
+            />
+
+            <Search className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400" />
+
+          </div>
+
+          {/* NAV ICONS */}
+
+          <div className="flex items-center gap-3">
+
+            <button className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:-translate-y-1 hover:bg-white/10 transition-all">
+              <Heart size={20} />
+            </button>
+
+            <button className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:-translate-y-1 hover:bg-white/10 transition-all">
+              <ShoppingCart size={20} />
+            </button>
+
+            <button className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:-translate-y-1 hover:bg-white/10 transition-all">
+              <User size={20} />
+            </button>
+
+          </div>
+
+        </div>
+
+      </header>
+
+      {/* =========================================
+          CATEGORY BAR
+      ========================================= */}
+
+      <section className="flex gap-4 overflow-x-auto px-6 py-6 scrollbar-hide">
+
+        {[
+          "Fashion",
+          "Electronics",
+          "Shoes",
+          "Mobiles",
+          "Gaming",
+          "Luxury",
+          "Gadgets",
+          "Headphones",
+        ].map((item, i) => (
+          <button
+            key={i}
+            className="min-w-max px-6 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-gradient-to-r hover:from-purple-500 hover:to-yellow-300 hover:text-black transition-all font-semibold"
+          >
+            {item}
+          </button>
+        ))}
+
+      </section>
+
+      {/* =========================================
+          HERO SECTION
+      ========================================= */}
+
+      <section className="relative px-6 pb-10">
+
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="max-w-7xl mx-auto rounded-[40px] border border-white/10 bg-gradient-to-br from-purple-500/15 to-yellow-300/5 backdrop-blur-2xl p-8 md:p-16 overflow-hidden relative"
+        >
+
+          <div className="absolute top-[-150px] right-[-100px] w-[400px] h-[400px] rounded-full bg-white/5"></div>
+
+          <div className="relative z-10">
+
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-300/10 border border-yellow-300/20 text-yellow-300 text-sm font-semibold mb-6">
+              <Sparkles size={16} />
+              AI Powered Ecommerce
+            </span>
+
+            <h1 className="text-5xl md:text-8xl font-black leading-none max-w-5xl">
+              Future Of{" "}
+              <span className="bg-gradient-to-r from-purple-400 to-yellow-300 bg-clip-text text-transparent">
+                Luxury Shopping
+              </span>
+            </h1>
+
+            <p className="text-gray-300 max-w-2xl mt-8 text-lg leading-8">
+              Futuristic ecommerce platform inspired by Amazon,
+              Apple, Nike and Stripe with premium UI,
+              AI shopping assistant and world-class luxury experience.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-5 mt-10">
+
+              <button className="h-14 px-8 rounded-2xl bg-gradient-to-r from-purple-500 to-yellow-300 text-black font-bold hover:scale-105 transition-all shadow-[0_0_50px_rgba(139,92,246,0.4)]">
+                Shop Now
+              </button>
+
+              <button className="h-14 px-8 rounded-2xl bg-white/5 border border-white/10 font-semibold hover:bg-white/10 transition-all">
+                Explore AI Shopping
+              </button>
+
+            </div>
+
+          </div>
+
+        </motion.div>
+
+      </section>
+
+      {/* =========================================
+          TRENDING PRODUCTS
+      ========================================= */}
+
+      <section className="px-6 py-6">
+
+        <div className="max-w-7xl mx-auto">
+
+          <div className="flex items-center justify-between mb-10">
+
+            <h2 className="text-4xl md:text-5xl font-black">
+              Trending Products
+            </h2>
+
+            <button className="flex items-center gap-2 text-yellow-300 font-semibold">
+              View All
+              <ArrowRight size={18} />
+            </button>
+
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            {products.map((item, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ y: -12 }}
+                className="rounded-[32px] overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl group"
+              >
+
+                {/* IMAGE */}
+
+                <div className="h-[320px] bg-gradient-to-br from-[#1F2430] to-[#0F1115] relative flex items-center justify-center">
+
+                  <span className="absolute top-5 left-5 px-4 py-2 rounded-full bg-gradient-to-r from-yellow-300 to-orange-400 text-black text-xs font-black">
+                    {item.tag}
+                  </span>
+
+                  <div className="text-gray-500 font-black text-xl">
+                    PRODUCT IMAGE
+                  </div>
+
+                </div>
+
+                {/* INFO */}
+
+                <div className="p-6">
+
+                  <h3 className="text-2xl font-bold">
+                    {item.title}
+                  </h3>
+
+                  <div className="flex items-center gap-2 mt-3 text-yellow-300">
+
+                    <Star size={18} fill="currentColor" />
+                    <Star size={18} fill="currentColor" />
+                    <Star size={18} fill="currentColor" />
+                    <Star size={18} fill="currentColor" />
+                    <Star size={18} fill="currentColor" />
+
+                    <span className="text-white ml-2">
+                      {item.rating}
+                    </span>
+
+                  </div>
+
+                  <div className="flex gap-3 mt-6">
+
+                    <button className="flex-1 h-12 rounded-2xl bg-gradient-to-r from-purple-500 to-yellow-300 text-black font-bold hover:scale-[1.03] transition-all">
+                      Buy Now
+                    </button>
+
+                    <button className="w-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all">
+                      <Heart size={18} />
+                    </button>
+
+                  </div>
+
+                </div>
+
+              </motion.div>
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =========================================
+          AI SHOPPING ASSISTANT
+      ========================================= */}
+
+      <section className="px-6 py-10">
+
+        <div className="max-w-7xl mx-auto rounded-[40px] border border-white/10 bg-gradient-to-br from-purple-500/10 to-yellow-300/5 backdrop-blur-2xl p-8 md:p-14">
+
+          <div className="max-w-3xl">
+
+            <span className="text-yellow-300 font-semibold">
+              AI SHOPPING ASSISTANT
+            </span>
+
+            <h2 className="text-5xl md:text-6xl font-black mt-4 leading-tight">
+              Personalized AI Shopping Experience
+            </h2>
+
+            <p className="text-gray-300 mt-6 leading-8 text-lg">
+              Smart recommendations, AI generated deals,
+              futuristic product suggestions and premium
+              luxury shopping experience.
+            </p>
+
+            <div className="flex gap-4 mt-8">
+
+              <input
+                type="text"
+                placeholder="Ask AI assistant..."
+                className="flex-1 h-14 rounded-2xl bg-white/5 border border-white/10 px-5 outline-none focus:border-purple-500"
+              />
+
+              <button className="px-8 rounded-2xl bg-gradient-to-r from-purple-500 to-yellow-300 text-black font-bold">
+                Ask AI
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =========================================
+          FOOTER
+      ========================================= */}
+
+      <footer className="px-6 py-10">
+
+        <div className="max-w-7xl mx-auto rounded-[40px] bg-[#181C24] border border-white/10 p-10">
+
+          <div className="grid md:grid-cols-4 gap-10">
+
+            <div>
+
+              <h2 className="text-3xl font-black bg-gradient-to-r from-purple-400 to-yellow-300 text-transparent bg-clip-text">
+                JKY MART
+              </h2>
+
+              <p className="text-gray-400 mt-5 leading-7">
+                Future of premium ecommerce with AI-powered shopping experience.
+              </p>
+
+            </div>
+
+            <div>
+
+              <h3 className="font-bold text-xl mb-5">
+                Company
+              </h3>
+
+              <div className="space-y-3 text-gray-400">
+
+                <p>About</p>
+                <p>Careers</p>
+                <p>Investors</p>
+
+              </div>
+
+            </div>
+
+            <div>
+
+              <h3 className="font-bold text-xl mb-5">
+                Support
+              </h3>
+
+              <div className="space-y-3 text-gray-400">
+
+                <p>Help Center</p>
+                <p>Orders</p>
+                <p>Returns</p>
+
+              </div>
+
+            </div>
+
+            <div>
+
+              <h3 className="font-bold text-xl mb-5">
+                AI Features
+              </h3>
+
+              <div className="space-y-3 text-gray-400">
+
+                <p>AI Recommendations</p>
+                <p>Voice Shopping</p>
+                <p>Smart Deals</p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </footer>
+
+    </main>
+  );
+}
