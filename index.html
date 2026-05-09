@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JKY MART</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================
+   JKY MART — PREMIUM COLOR SYSTEM
+========================================= */
+
+:root{
+
+  /* ⚫ DARK BACKGROUND */
+
+  --bg:#0F1115;
+  --bg-secondary:#181C24;
+  --card:#1F2430;
+
+  /* 🟣 PURPLE ACCENT */
+
+  --primary:#6C63FF;
+  --primary-hover:#8B85FF;
+
+  /* 🟨 GOLD PREMIUM */
+
+  --gold:#F7C873;
+  --gold-dark:#F5B942;
+
+  /* ⚪ WHITE TEXT */
+
+  --text:#FFFFFF;
+  --text-secondary:#B8C0CC;
+
+  /* SUCCESS */
+
+  --green:#22C55E;
+
+  /* GLASS */
+
+  --glass:rgba(255,255,255,0.05);
+
+  /* BORDER */
+
+  --border:rgba(255,255,255,0.08);
+
+  /* PREMIUM GRADIENT */
+
+  --gradient:
+  linear-gradient(
+  135deg,
+  #6C63FF,
+  #8B5CF6,
+  #F7C873
+  );
+
+}
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
+
+body{
+
+  background:var(--bg);
+
+  color:var(--text);
+
+  overflow-x:hidden;
+
+  padding-bottom:120px;
+
+}
+
+/* =========================================
+   BACKGROUND GLOW
+========================================= */
+
+body::before{
+
+  content:"";
+
+  position:fixed;
+
+  width:500px;
+  height:500px;
+
+  background:
+  rgba(108,99,255,0.18);
+
+  border-radius:50%;
+
+  filter:blur(120px);
+
+  top:-200px;
+  left:-150px;
+
+  z-index:-1;
+
+}
+
+body::after{
+
+  content:"";
+
+  position:fixed;
+
+  width:450px;
+  height:450px;
+
+  background:
+  rgba(247,200,115,0.12);
+
+  border-radius:50%;
+
+  filter:blur(120px);
+
+  bottom:-150px;
+  right:-150px;
+
+  z-index:-1;
+
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar{
+
+  position:sticky;
+  top:0;
+
+  z-index:1000;
+
+  background:
+  rgba(15,17,21,0.82);
+
+  backdrop-filter:blur(24px);
+
+  border-bottom:
+  1px solid var(--border);
+
+}
+
+.nav-inner{
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:20px;
+
+  padding:18px 24px;
+
+}
+
+.logo{
+
+  font-size:34px;
+  font-weight:900;
+
+  background:var(--gradient);
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+}
+
+/* =========================================
+   SEARCH BAR
+========================================= */
+
+.search{
+
+  flex:1;
+
+  max-width:800px;
+
+}
+
+.search input{
+
+  width:100%;
+  height:60px;
+
+  border:none;
+  outline:none;
+
+  border-radius:20px;
+
+  background:var(--glass);
+
+  border:
+  1px solid var(--border);
+
+  color:white;
+
+  padding:0 22px;
+
+  font-size:15px;
+
+  transition:0.35s;
+
+}
+
+.search input:focus{
+
+  border:
+  1px solid var(--primary);
+
+  box-shadow:
+  0 0 35px rgba(108,99,255,0.45);
+
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.btn{
+
+  height:56px;
+
+  padding:0 30px;
+
+  border:none;
+
+  border-radius:18px;
+
+  cursor:pointer;
+
+  font-weight:700;
+
+  transition:0.35s;
+
+}
+
+.btn-primary{
+
+  background:var(--gradient);
+
+  color:white;
+
+  box-shadow:
+  0 15px 40px rgba(108,99,255,0.35);
+
+}
+
+.btn-primary:hover{
+
+  transform:
+  translateY(-4px);
+
+}
+
+.btn-gold{
+
+  background:var(--gold);
+
+  color:#111827;
+
+}
+
+.btn-gold:hover{
+
+  background:var(--gold-dark);
+
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero{
+
+  margin:20px;
+
+  padding:100px 60px;
+
+  border-radius:36px;
+
+  background:
+  linear-gradient(
+  135deg,
+  rgba(108,99,255,0.15),
+  rgba(247,200,115,0.08)
+  );
+
+  border:
+  1px solid var(--border);
+
+  position:relative;
+
+  overflow:hidden;
+
+}
+
+.hero::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:600px;
+  height:600px;
+
+  background:
+  rgba(255,255,255,0.04);
+
+  border-radius:50%;
+
+  top:-250px;
+  right:-180px;
+
+}
+
+.hero h1{
+
+  font-size:82px;
+
+  line-height:1.05;
+
+  max-width:850px;
+
+  margin-bottom:24px;
+
+}
+
+.hero p{
+
+  max-width:700px;
+
+  color:var(--text-secondary);
+
+  line-height:1.9;
+
+  font-size:18px;
+
+}
+
+.hero-buttons{
+
+  display:flex;
+
+  gap:18px;
+
+  margin-top:36px;
+
+}
+
+/* =========================================
+   CATEGORY BAR
+========================================= */
+
+.categories{
+
+  display:flex;
+
+  gap:14px;
+
+  overflow-x:auto;
+
+  padding:20px;
+
+  scrollbar-width:none;
+
+}
+
+.categories::-webkit-scrollbar{
+  display:none;
+}
+
+.category{
+
+  min-width:max-content;
+
+  padding:14px 28px;
+
+  border-radius:50px;
+
+  background:var(--glass);
+
+  border:
+  1px solid var(--border);
+
+  cursor:pointer;
+
+  transition:0.35s;
+
+  font-weight:600;
+
+}
+
+.category:hover,
+.category.active{
+
+  background:var(--gradient);
+
+  transform:translateY(-4px);
+
+  box-shadow:
+  0 15px 40px rgba(108,99,255,0.35);
+
+}
+
+/* =========================================
+   SECTION
+========================================= */
+
+.section{
+
+  padding:20px;
+
+}
+
+.section-title{
+
+  font-size:42px;
+  font-weight:900;
+
+  margin-bottom:28px;
+
+}
+
+/* =========================================
+   PRODUCTS
+========================================= */
+
+.products{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(270px,1fr));
+
+  gap:28px;
+
+}
+
+.product-card{
+
+  background:
+  rgba(255,255,255,0.04);
+
+  border:
+  1px solid var(--border);
+
+  border-radius:32px;
+
+  overflow:hidden;
+
+  transition:0.4s;
+
+}
+
+.product-card:hover{
+
+  transform:
+  translateY(-12px);
+
+  box-shadow:
+  0 25px 60px rgba(0,0,0,0.45);
+
+}
+
+.product-image{
+
+  height:290px;
+
+  background:
+  linear-gradient(
+  135deg,
+  #1F2430,
+  #111827
+  );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#64748B;
+
+  font-size:22px;
+  font-weight:800;
+
+}
+
+.offer{
+
+  position:absolute;
+
+  margin:16px;
+
+  padding:10px 16px;
+
+  border-radius:50px;
+
+  background:var(--gold);
+
+  color:#111827;
+
+  font-weight:800;
+
+}
+
+.product-info{
+
+  padding:24px;
+
+}
+
+.product-info h3{
+
+  font-size:24px;
+
+  margin-bottom:12px;
+
+}
+
+.rating{
+
+  color:var(--gold);
+
+  margin-bottom:22px;
+
+}
+
+.product-actions{
+
+  display:flex;
+
+  gap:12px;
+
+}
+
+/* =========================================
+   AI SECTION
+========================================= */
+
+.ai-box{
+
+  margin:20px;
+
+  padding:50px;
+
+  border-radius:36px;
+
+  background:
+  linear-gradient(
+  135deg,
+  rgba(108,99,255,0.14),
+  rgba(247,200,115,0.05)
+  );
+
+  border:
+  1px solid var(--border);
+
+}
+
+.ai-box h2{
+
+  font-size:48px;
+
+  margin-bottom:18px;
+
+}
+
+.ai-box p{
+
+  max-width:700px;
+
+  color:var(--text-secondary);
+
+  line-height:1.8;
+
+  margin-bottom:24px;
+
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer{
+
+  margin:20px;
+
+  padding:50px;
+
+  border-radius:36px;
+
+  background:var(--bg-secondary);
+
+  border:
+  1px solid var(--border);
+
+}
+
+.footer h3{
+
+  margin-bottom:18px;
+
+}
+
+.footer p{
+
+  color:var(--text-secondary);
+
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:768px){
+
+  .nav-inner{
+
+    flex-direction:column;
+
+  }
+
+  .hero{
+
+    padding:60px 28px;
+
+  }
+
+  .hero h1{
+
+    font-size:48px;
+
+  }
+
+  .hero-buttons{
+
+    flex-direction:column;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<header class="navbar">
+
+  <div class="nav-inner">
+
+    <div class="logo">
+      JKY MART
+    </div>
+
+    <div class="search">
+
+      <input
+      type="text"
+      placeholder="Search products, brands and more..."
+      >
+
+    </div>
+
+    <button class="btn btn-primary">
+      Login
+    </button>
+
+  </div>
+
+</header>
+
+<!-- =========================================
+     CATEGORIES
+========================================= -->
+
+<div class="categories">
+
+  <div class="category active">
+    Fashion
+  </div>
+
+  <div class="category">
+    Electronics
+  </div>
+
+  <div class="category">
+    Shoes
+  </div>
+
+  <div class="category">
+    Mobiles
+  </div>
+
+  <div class="category">
+    Gadgets
+  </div>
+
+  <div class="category">
+    Grocery
+  </div>
+
+</div>
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section class="hero">
+
+  <h1>
+    Luxury Future Shopping Experience
+  </h1>
+
+  <p>
+    Premium futuristic ecommerce platform inspired by Amazon,
+    Apple, Nike and AI startups with dark luxury interface,
+    purple glow accents and premium gold experience.
+  </p>
+
+  <div class="hero-buttons">
+
+    <button class="btn btn-primary">
+      Shop Now
+    </button>
+
+    <button class="btn btn-gold">
+      Explore AI
+    </button>
+
+  </div>
+
+</section>
+
+<!-- =========================================
+     TRENDING PRODUCTS
+========================================= -->
+
+<section class="section">
+
+  <h2 class="section-title">
+    Trending Products
+  </h2>
+
+  <div class="products">
+
+    <div class="product-card">
+
+      <div class="offer">
+        50% OFF
+      </div>
+
+      <div class="product-image">
+        PRODUCT IMAGE
+      </div>
+
+      <div class="product-info">
+
+        <h3>
+          Premium Sneakers
+        </h3>
+
+        <div class="rating">
+          ★★★★★
+        </div>
+
+        <div class="product-actions">
+
+          <button class="btn btn-primary">
+            Buy Now
+          </button>
+
+          <button class="btn btn-gold">
+            Cart
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="product-card">
+
+      <div class="offer">
+        Bestseller
+      </div>
+
+      <div class="product-image">
+        PRODUCT IMAGE
+      </div>
+
+      <div class="product-info">
+
+        <h3>
+          Smart Headphones
+        </h3>
+
+        <div class="rating">
+          ★★★★★
+        </div>
+
+        <div class="product-actions">
+
+          <button class="btn btn-primary">
+            Buy Now
+          </button>
+
+          <button class="btn btn-gold">
+            Cart
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================
+     AI SECTION
+========================================= -->
+
+<section class="ai-box">
+
+  <h2>
+    AI Shopping Assistant
+  </h2>
+
+  <p>
+    Personalized shopping recommendations,
+    AI generated deals and futuristic premium experience.
+  </p>
+
+  <button class="btn btn-primary">
+    Ask AI Assistant
+  </button>
+
+</section>
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="footer">
+
+  <h3>
+    JKY MART
+  </h3>
+
+  <p>
+    Premium Luxury Ecommerce Platform
+  </p>
+
+</footer>
+
+</body>
+</html>
